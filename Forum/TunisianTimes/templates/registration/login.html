@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Login{% endblock %}
+{% block css%}<link
+  rel="stylesheet"
+  href="{% static 'myblog\css\login.css' %}"
+/>{% endblock %} {% block content %}
+<div class="login-container">
+  <!-- New code begin -->
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheet-->
+    <style media="screen"></style>
+  </head>
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <form method="POST">
+      {% csrf_token %} {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ form.non_field_errors }} Not registered?
+        <a href="{% url 'register' %}">Register here</a>.
+      </div>
+      {% endif %}
+      <h3>Login Here</h3>
+
+      <label for="username">Username</label>
+      <input name="username" type="text" placeholder="Username" id="username" />
+
+      <label for="password">Password</label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        id="password"
+      />
+
+      <button>Log In</button>
+    </form>
+  </body>
+
+  <!-- New code end -->
+
+  {% endblock %}
+</div>

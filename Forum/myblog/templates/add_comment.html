@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Add comment{% endblock %}
+{% block content %}
+<h1>ADD Comment</h1>
+<br>
+<div class="form-group ml-4">
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">ADD</button>
+</form>
+</div>
+{% endblock %}

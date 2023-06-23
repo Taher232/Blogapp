@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}New Post{% endblock %}
+{% block content %}
+<h1 class="ml-3">ADD POST</h1>
+<br>
+<div class="form-group ml-5">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <button class="btn btn-primary">POST</button>
+</form>
+</div>
+
+<script>
+    var name="{{ user.id }}";
+    document.getElementById("elder").value=name;
+</script> 
+
+{% endblock %}

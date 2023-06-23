@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Edit Post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+<h1 class="ml-4">Delete {{ post.title }}</h1>
+<br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <strong class="ml-4">Delete or Non {{post.title}} ??</strong></br></br>
+        <button class="btn btn-primary ml-4">Supprimer</button>
+        
+        
+    </form>
+    <a href="{% url "home" %}"><button class="btn btn-primary mt-2 ml-4">Cancel</button></a>
+{% else %}
+<h1 class="ml-4">You are not authorized to delete this post.Please Login !!!!!!! </h1>
+{% endif %}
+{% endif %}
+
+{% endblock %}

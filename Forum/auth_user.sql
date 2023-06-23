@@ -1,0 +1,5 @@
+INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$260000$aIlEGEAichnD2l15JVND8P$JkwVq2fAhaw/KU5M5p+DXI5/iVdi164WOY/OPyVZT7s=','2023-06-07 07:03:02.788403',1,'taherch','Chabaane','taher.chabaane.1@gmail.com',1,1,'2023-05-23 15:46:13.097479','Taher');
+INSERT INTO "auth_user" VALUES(2,'pbkdf2_sha256$260000$zuxdjZSfuj2wriGNahJkYk$ONJ/FIJF1T6l/kIViHDIUen/QOIpS6vBAUHhhVqCm0c=',NULL,0,'abdulla','Bar','fooo.bar@example.com',0,1,'2023-05-23 15:51:02.656342','Foo');
+INSERT INTO "auth_user" VALUES(3,'pbkdf2_sha256$260000$60hfEDymRDTGpIiAzHjh8N$BInySKeu4PRsgNxr2/Y45jBBOj/n/2QG5wx9h5VXUNU=',NULL,0,'Char','ki','taher.chabaane.1@gmail.com',0,1,'2023-05-25 13:37:30.402850','ju');
+INSERT INTO "auth_user" VALUES(4,'pbkdf2_sha256$260000$tSW5bkhcDmLxQTpBT2zEhL$RaUsX9GaTiZFOiWZ+mvq/Siv3kp3cSBxc3uJQUoVT/Y=','2023-06-02 18:39:49.647154',0,'Taher','cHa','deeeji@gmail.com',0,1,'2023-06-02 18:39:20.840514','Taherf');
+INSERT INTO "auth_user" VALUES(5,'pbkdf2_sha256$260000$RmgK1GvIJzEVFcx6d0m1cv$pEgDQ+Uxn/DqFmPYBaWLNOUS98ZSimHKjJNQwUVvkg0=','2023-06-06 12:28:29.385155',0,'Tektek','Ch','gefzaugf@gmail.com',0,1,'2023-06-06 12:28:12.541039','tek');

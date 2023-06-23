@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css%}
+<link rel="stylesheet" href="{% static 'myblog\css\home.css' %}">{% endblock %}
+{% block content %}
+<div class="bg-primary">
+  <h1 class="ml-4 mr-4 text-center text-white bg-primary">POST</h1>
+  
+
+  <div class="row ml-4 mr-4 p-4 bg-primary">
+    {% for post in object_list %}
+    <div class="col-6 col-sm-6 col-md-4 px-2 mb-1 mycard  bg-primary">
+      <div class="card mt-4 w-100">
+        <div class="card-post-header video fix-size-image-container fix-size-image-rate-5-9">
+          {% if post.video_file %}
+          <video class="w-100 fix-size-image" autoplay loop muted controls ">
+          <!-- <video class="w-100 fix-size-image" muted controls  onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"> -->
+          <source src=" {{ post.video_file.url }}" type="video/mp4">
+          </video>
+          {% else %}
+
+          <img class="card-img-top img-thumbnail img-thumbnail-post fix-size-image" src="{{ post.header_image.url }}"></img>
+          {% endif %}
+
+        </div>
+        <div class="card-body card-post-body" style="height:225px; position: relative;  " >
+          <h5 class="card-title text-primary">{{ post.title }}</h5>
+
+          <p class="h6"> {{ post.author.first_name }} {{ post.author.last_name }} -
+            <a href="{% url 'categorys' post.category %}">{{ post.category }}</a>
+            {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+            <small><a href="{% url 'update_post' post.pk %}">(Edit)</a>
+              <a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+            <br />
+            {% endif %}
+            {% endif %}
+          </p>
+
+
+
+          <p class="card-text">{{ post.snippet | truncatewords:20 }}.</p>
+          <a href="{% url 'article_detail' post.pk %}"><button class="btn btn-primary"  style="position: absolute; bottom: 0; left:50%; transform: translate(-50%, -50%);">Read more</button></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="feeds">
+
+    {% for item in feeds %}
+    <img class="feed">
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.description|safe }}</p>
+    <p>{{item.video_file}}</p>
+    <img src="{{ item.img.src}}">
+    <video src="{{ item.video_file.url }}"></video>
+
+    <a href="{{ item.link }}" target="_blank" title="{{ item.title }}">Read more</a>
+    {% endfor %}
+  </div>
+
+
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" aria-hidden="true">&laquo;</span>
+      </li>
+      {% endif %}
+
+      {% for page in paginator.page_range %}
+      {% if page_obj.number == page %}
+      <li class="page-item active">
+        <span class="page-link">{{ page }} <span class="sr-only">(current)</span></span>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" aria-hidden="true">&raquo;</span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+<!-- <script>
+  var cip = $(".video").hover( hoverVideo, hideVideo );
+
+function hoverVideo(e) {  
+    $('video', this).get(0).play(); 
+}
+
+function hideVideo(e) {
+    $('video', this).get(0).pause(); 
+}
+</script> -->
+{% endblock %}
+

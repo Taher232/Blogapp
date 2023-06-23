@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {%block title%}Forum Categories{% endblock %} 
+{% block content %}
+
+<h1 class="ml-4">Forum Categories</h1>
+{% for item in cat_menu_list %}
+<li class="ml-4"><a href="{% url 'categorys' item %}">{{ item }}</a></li>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Edit Settings{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1 class="ml-5">Edit Settings</h1>
+<br>
+<div class="form-group ml-5">
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Register</button>
+</form>
+</div>
+{% else %}
+<h1>Hey Please login to Continue !!!</h1>
+{% endif %}
+
+{% endblock %}
